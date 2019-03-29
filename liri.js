@@ -40,7 +40,7 @@ if (command === "movie-this") {
             console.log("Title: " + response.data.Title);
             console.log("Release Year: " + response.data.Year);
             console.log("IMB Rating: " + response.data.imdbRating);
-            console.log("Ratings: " + response.data.Ratings);
+            console.log(response.data.Ratings[1].Source+ " : " + response.data.Ratings[1].Value);
             console.log("Country produced: " + response.data.Country);
             console.log("Launguage: " + response.data.Language);
             console.log("Plot: " + response.data.Plot);
