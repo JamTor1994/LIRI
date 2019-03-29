@@ -1,4 +1,5 @@
 var axios = require("axios");
+var moment= require("moment")
 require("dotenv").config();
 var keys = require("./key.js");
 var Spotify = require('node-spotify-api');
@@ -28,6 +29,13 @@ for (var i = 3; i < search.length; i++) {
 if (movieName.length === 0) {
     movieName = "Mr.Nobody"
 }
+if (song.length === 0){
+    song = "The Sign"
+}
+if (bandName.length === 0){
+    bandName = "Imagine Dragons";
+    console.log("Imagine Dragons")
+}
 //omdb function
 // omd api key/ layout http://www.omdbapi.com/?i=tt3896198&apikey=8c938da9
 if (command === "movie-this") {
@@ -36,7 +44,7 @@ if (command === "movie-this") {
 
     axios.get(queryUrl).then(
         function (response) {
-            console.log(response.data);
+            // console.log(response.data);
             console.log("Title: " + response.data.Title);
             console.log("Release Year: " + response.data.Year);
             console.log("IMB Rating: " + response.data.imdbRating);
@@ -64,7 +72,7 @@ if (command === "movie-this") {
 // // Band with api test "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
 if (command === "concert-this") {
     var queryUrl2 = "https://rest.bandsintown.com/artists/" + bandName + "/events?app_id=codingbootcamp"
-    console.log(queryUrl2)
+    // console.log(queryUrl2)
     axios.get(queryUrl2).then(
         function (response) {
             // console.log(response.data)
@@ -72,6 +80,7 @@ if (command === "concert-this") {
             console.log("City: " +response.data[0].venue.city)
             console.log("State or Region: " +response.data[0].venue.region)
             console.log("Country: " +response.data[0].venue.country)
+            console.log("Date: " +moment(response.data[0].datetime).format('MM-DD-YYYY') )
         }
     )
         .catch(function (error) {
