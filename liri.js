@@ -36,11 +36,11 @@ if (command === "movie-this") {
 
     axios.get(queryUrl).then(
         function (response) {
-            // console.log(response.data);
+            console.log(response.data);
             console.log("Title: " + response.data.Title);
             console.log("Release Year: " + response.data.Year);
             console.log("IMB Rating: " + response.data.imdbRating);
-            console.log("Ratings: " + response.data.Ratings.Source);
+            console.log("Ratings: " + response.data.Ratings);
             console.log("Country produced: " + response.data.Country);
             console.log("Launguage: " + response.data.Language);
             console.log("Plot: " + response.data.Plot);
@@ -67,7 +67,11 @@ if (command === "concert-this") {
     console.log(queryUrl2)
     axios.get(queryUrl2).then(
         function (response) {
-            console.log(response.data)
+            // console.log(response.data)
+            console.log("Name of Venue: "+ response.data[0].venue.name)
+            console.log("City: " +response.data[0].venue.city)
+            console.log("State or Region: " +response.data[0].venue.region)
+            console.log("Country: " +response.data[0].venue.country)
         }
     )
         .catch(function (error) {
