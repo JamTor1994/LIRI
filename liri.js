@@ -32,10 +32,7 @@ if (movieName.length === 0) {
 if (song.length === 0){
     song = "The Sign"
 }
-if (bandName.length === 0){
-    bandName = "Imagine Dragons";
-    console.log("Imagine Dragons")
-}
+
 //omdb function
 // omd api key/ layout http://www.omdbapi.com/?i=tt3896198&apikey=8c938da9
 if (command === "movie-this") {
